@@ -1,6 +1,5 @@
 def send_weekly_summary():
-    # Delayed import to avoid circular import issues
-    from . import app, mail
+    from app import app, mail
     from flask_mail import Message
 
     with app.app_context():
