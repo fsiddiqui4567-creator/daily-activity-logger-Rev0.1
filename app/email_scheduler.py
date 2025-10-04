@@ -14,12 +14,9 @@ def send_weekly_summary():
                       (user_id, (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')))
             tasks = c.fetchall()
             if tasks:
-                body = f"Weekly Summary for {username}:
-
-"
+                body = f"Weekly Summary for {username}:\n\n"
                 for task, date in tasks:
-                    body += f"- {date}: {task}
-"
+                    body += f"- {date}: {task}\n"
                 msg = Message(subject=f"Weekly Summary - {username}",
                               sender=app.config['MAIL_USERNAME'],
                               recipients=['manager_email@example.com'],
